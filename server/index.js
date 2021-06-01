@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get('/news', function(req, res, next) {
-    request('https://newsapi.org/v2/top-headlines?country=in&apiKey=64bdafeb6c6d4018829dfd5ea76bfc9c', options, function(error, response, body) {
+    request('https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=64bdafeb6c6d4018829dfd5ea76bfc9c', options, function(error, response, body) {
         res.send(body)
     });
 });

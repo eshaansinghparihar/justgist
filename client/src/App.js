@@ -34,18 +34,6 @@ export default function App() {
   <div>
   <h2>News</h2>
   <NewsCards data={news} error={error}/>
-  {/* <h2>Business News</h2>
-  <NewsCards data={businessnews}/>
-  <h2>Entertainment News</h2>
-  <NewsCards data={entertainmentnews}/>
-  <h2>Health News</h2>
-  <NewsCards data={healthnews}/>
-  <h2>Science News</h2>
-  <NewsCards data={sciencenews}/>
-  <h2>Sports News</h2>
-  <NewsCards data={sportsnews}/>
-  <h2>Technology News</h2>
-  <NewsCards data={technologynews}/> */}
   </div>
   );
 }
