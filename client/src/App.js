@@ -10,7 +10,7 @@ export default function App() {
   const [sciencenews, setscienceNews]=useState([]);
   const [sportsnews, setsportsNews]=useState([]);
   const [technologynews, settechnologyNews]=useState([]);
-  const [error,setError]=useState('No Error, Status OK');
+  const [error,setError]=useState('');
   var url;
   function callNewsAPI(){
         fetch("/news")
@@ -31,11 +31,10 @@ export default function App() {
   },[]);
 
   return (
-    <div>
-  <h2>{error}</h2>
+  <div>
   <h2>News</h2>
-  <NewsCards data={news}/>
-  <h2>Business News</h2>
+  <NewsCards data={news} error={error}/>
+  {/* <h2>Business News</h2>
   <NewsCards data={businessnews}/>
   <h2>Entertainment News</h2>
   <NewsCards data={entertainmentnews}/>
@@ -46,7 +45,7 @@ export default function App() {
   <h2>Sports News</h2>
   <NewsCards data={sportsnews}/>
   <h2>Technology News</h2>
-  <NewsCards data={technologynews}/>
+  <NewsCards data={technologynews}/> */}
   </div>
   );
 }
