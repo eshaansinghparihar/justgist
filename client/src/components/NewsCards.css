@@ -20,6 +20,12 @@
     align-items: center;
     justify-content: center;
   }
+  .noimage{
+    min-height:80vh;
+    max-height:100vh;
+    width: 100%;
+    background: linear-gradient(#c471ed 30%, #f64f59 90% );
+  }
   .author{
     font-family: 'Conv_ClanPro-Bold',Sans-Serif;
     color: #d3d3d3;
@@ -38,8 +44,8 @@ a { text-decoration: none; color:#d3d3d3 }
     min-height:80vh;
     max-height:100vh;
     width: 100%;
-    -webkit-filter: brightness(25%) blur(2px);
-    filter: brightness(25%) blur(2px);
+    -webkit-filter: brightness(30%) blur(1px);
+    filter: brightness(30%) blur(1px);
 
   }
   text{
