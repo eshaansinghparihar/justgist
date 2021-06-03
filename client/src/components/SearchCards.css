@@ -1,0 +1,113 @@
+.App {
+    text-align: center;
+    background-color: #282c34;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+    .divisionsearch {
+    margin-top: 30vh;
+    margin-bottom: 20vh;
+    }
+  .pageheading{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+  }
+  .subtitle{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  .number{
+    width: 100%;
+    /* padding: 2rem; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .Input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:1vh;
+    padding: 1rem;
+    width: 70%;
+    border-radius: 20px;
+    border: 0.5px solid black;
+    box-shadow: 8px 8px 8px #c9c5c5;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .Button{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+    width: 25%;
+    margin:0.5rem;
+    font-weight: 800;
+    background-color: #0f0f0f; 
+    color: white;
+    margin-bottom: 2vh;
+  }
+  .ButtonLeft{
+    top:0;
+    left:0;
+    border: 0.5px solid black;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+    width: 7%;
+    margin:0.5rem;
+    font-weight: 800;
+    background-color: #0f0f0f; 
+    color: white;
+    margin-bottom: 2vh;
+  }
+  .Button:hover {
+    background-color: black;
+    color: white;
+  }
+  .Buttonrow{
+    border: 0.5px solid black;
+    border-radius: 20px;
+   
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+  
+    margin:0.5rem;
+    font-weight: 800;
+    background-color: #0f0f0f; 
+    color: white;
+    
+  }
+  .Buttonrownav{
+    
+    border-radius: 20px;
+   
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+    
+    margin:0.5rem;
+    font-weight: 800;
+    background-color: rgb(228, 69, 149); 
+    color: white;
+    
+  }
+  .Button:active { 
+    transform: scale(0.98); 
+    box-shadow: 3px 2px 18px 1px rgba(0, 0, 0, 0.24);  
+  } 
+  .Buttonrow:active{
+    transform: scale(0.98); 
+    box-shadow: 3px 2px 18px 1px rgba(0, 0, 0, 0.24);  
+  }
+  .Buttonrownav{
+    transform: scale(0.98); 
+    box-shadow: 3px 2px 18px 1px rgba(0, 0, 0, 0.24);  
+  }

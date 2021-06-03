@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Switch,Route,Redirect } from 'react-router-dom';
 import NewsCards from './components/NewsCards';
 import Navigation from './components/Navigation';
-
+import SearchCards from './components/SearchCards';
 export default function App() {
   const [news, setNews]=useState([]);
   const [businessnews, setbusinessNews]=useState([]);
@@ -12,7 +12,6 @@ export default function App() {
   const [sciencenews, setscienceNews]=useState([]);
   const [sportsnews, setsportsNews]=useState([]);
   const [technologynews, settechnologyNews]=useState([]);
-  const [searchnews, setsearchNews]=useState([]);
   const [error,setError]=useState('');
   function callNewsAPI(){
         fetch("/news")
@@ -112,20 +111,7 @@ function callTechnologyNewsAPI(){
   }
   });
 }
-function callSearchNewsAPI(){
-  fetch("/searchnews")
-  .then(res => res.json())
-  .then(res => {
-    if(res.status==='ok')
-  {
-    setsearchNews(res.articles)
-  }
-  else
-  {
-    setError(res.message)
-  }
-  });
-}
+
   useEffect(()=>{
     callNewsAPI();
     callBusinessNewsAPI();
@@ -134,7 +120,6 @@ function callSearchNewsAPI(){
     callScienceNewsAPI();
     callSportsNewsAPI();
     callTechnologyNewsAPI();
-    callSearchNewsAPI();
   },[]);
   
   return (
@@ -146,7 +131,7 @@ function callSearchNewsAPI(){
       <NewsCards data={news} error={error}/>
       </Route>
       <Route exact path="/search" >
-      <NewsCards data={searchnews} error={error}/>
+      <SearchCards />
       </Route>
       <Route exact path="/business" >
       <NewsCards data={businessnews} error={error}/>
