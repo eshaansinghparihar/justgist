@@ -59,7 +59,6 @@ app.get('/technologynews', function(req, res, next) {
 
 app.post('/sendquery', function(req, res) {
   query=req.body.question;
-  console.log(query)
   request(`https://newsapi.org/v2/everything?q=${query}&pageSize=100&apiKey=f9fb08a6fe4b409584ed26f296944b4b`, options, function(error, response, body) {
       res.send(body)
   });

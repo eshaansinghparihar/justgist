@@ -1,12 +1,14 @@
 import React from 'react';
 import './NewsCards.css';
+import Loading from './Loading';
+import Error from './Error';
 function News({data,error}){
   const newsRenderer=data.map((newsElem)=>
             {
             let date = new Date(newsElem.publishedAt) 
             return(
               <div className="container" key={newsElem.title}>
-                {(newsElem.urlToImage)?<img src={newsElem.urlToImage} className="image"></img>:<img className="noimage"/>}
+                {(newsElem.urlToImage)?<img src={newsElem.urlToImage} className="image"></img>:<img/>}
                 <div className="centered">
                 <p className="text heading">{newsElem.title}</p>
                 {(newsElem.author) ? (<p className="text author">Written by <b>{newsElem.author}</b> on {date.toDateString()} at {(date.getHours()<10?'0':'') + date.getHours()}:{(date.getMinutes()<10?'0':'') + date.getMinutes()} </p>):(<p className="text author">Written on {date.toDateString()} at {(date.getHours()<10?'0':'') + date.getHours()}:{(date.getMinutes()<10?'0':'') + date.getMinutes()}</p>)}
@@ -18,10 +20,10 @@ function News({data,error}){
             })
     return(
       <div>
-      {(error)?(<div>{error}</div>):((data.length!==0 && data!==undefined)?(
+      {(error)?(<Error error={error}/>):((data.length!==0 && data!==undefined)?(
         <div>
         {newsRenderer}
-        </div>):(<div>Loading</div>))}
+        </div>):(<Loading/>))}
       </div>
     );
 }

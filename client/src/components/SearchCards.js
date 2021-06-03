@@ -1,9 +1,11 @@
-import React ,{ useEffect, useState } from 'react';
+import React ,{ useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import axios from 'axios';
 import './SearchCards.css';
 import NewsCards from './NewsCards';
+import Loading from './Loading';
+import Error from './Error';
 function Search(){
     const [searchnews, setsearchNews]=useState([]);
     const [error,setError]=useState('');
@@ -39,14 +41,10 @@ function Search(){
         <div className="App">
             {(error)?
             (
-                <div>
-                    {error}
-                </div>
+              <Error error={error}/>
             ):((searchnews.length===0)?
             ((loading)?(
-            <div>
-              Loading
-            </div>
+              <Loading/>
             ):(
               (
                 <div className="divisionsearch">
@@ -70,9 +68,7 @@ function Search(){
             <div>
              {(searchnews.length!==0) && <ArrowBackIosIcon onClick={clickBackHandler} fontSize="small"/>}
              {(loading)?
-             (<div>
-               Loading
-              </div>):
+             (<Loading/>):
               (
              <div>
              <h2 className="pageheading">Search</h2>
