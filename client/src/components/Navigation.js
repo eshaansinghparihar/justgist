@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
       },
       appBar: {
-         background: 'linear-gradient(-45deg, #6f0000 10%, #200122 90%)',
-        //background:'#aa0000',
+        //  background: 'linear-gradient(-45deg, #6f0000 10%, #200122 90%)',
+        background:'#8d1c55',
         zIndex:theme.spacing(1),
         transition: theme.transitions.create(['margin', 'width'], {
           easing: theme.transitions.easing.sharp,
