@@ -150,8 +150,8 @@ function callTechnologyNewsAPI(){
       </Route>
       <Route exact path="/technology" >
       <NewsCards data={technologynews} error={error}/>
-      <Redirect to="/" />
       </Route>
+      <Redirect to="/" />
   </Switch>
   </div>
   </BrowserRouter>
