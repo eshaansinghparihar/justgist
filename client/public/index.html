@@ -43,19 +43,30 @@
       </div>
     </div>
     <script>
+      // if ('serviceWorker' in navigator) {
+      //   window.addEventListener('load', function() {
+      //     navigator.serviceWorker.register('worker.js').then(function(registration) {
+      //       console.log('Worker registration successful', registration.scope);
+      //     }, function(err) {
+      //       console.log('Worker registration failed', err);
+      //     }).catch(function(err) {
+      //       console.log(err);
+      //     });
+      //   });
+      // } else {
+      //   console.log('Service Worker supported by browser.');
+      // }
+      document.addEventListener('DOMContentLoaded', init, false);
+      function init() {
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('worker.js').then(function(registration) {
-            console.log('Worker registration successful', registration.scope);
-          }, function(err) {
-            console.log('Worker registration failed', err);
-          }).catch(function(err) {
-            console.log(err);
-          });
-        });
-      } else {
-        console.log('Service Worker supported by browser.');
+      navigator.serviceWorker.register('/worker.js')
+      .then((reg) => {
+        console.log('Service worker registered -->', reg);
+      }, (err) => {
+        console.error('Service worker not registered -->', err);
+      });
       }
-    </script>
+      }
+</script>
   </body>
 </html>
