@@ -125,7 +125,9 @@ function callTechnologyNewsAPI(){
   return (
   <BrowserRouter>
   <div>
+  <div className="float">
   <Navigation />
+  </div>
   <Switch>
       <Route exact path="/" >
       <NewsCards data={news} error={error}/>

@@ -21,9 +21,10 @@ function News({data,error}){
     return(
       <div>
       {(error)?(<Error error={error}/>):((data.length!==0 && data!==undefined)?(
-        <div>
+        <div className="newsRender">
         {newsRenderer}
-        </div>):(<Loading/>))}
+        </div>
+        ):(<Loading/>))}
       </div>
     );
 }

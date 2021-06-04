@@ -71,7 +71,7 @@ function Search(){
              (<Loading/>):
               (
              <div>
-             <h2 className="pageheading">Search</h2>
+             <h2 className="pageheading1">Search</h2>
                  <h3 className="subtitle">Search across any article published recently</h3>
                  <div className="number">
                  <input

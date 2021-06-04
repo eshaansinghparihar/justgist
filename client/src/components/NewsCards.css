@@ -1,9 +1,13 @@
+
 /* Mobile & Tablet */
 @media screen and (max-width: 799px) {
   .heading{
     font-family: 'Roboto',sans-serif;
     font-weight: 300;
     font-size: 20px;
+}
+.newsRender{
+  margin-top: 12vh;
 }
 .description{
     font-family: 'Roboto',sans-serif;
@@ -23,6 +27,7 @@ a { text-decoration: none; color:#44444d }
   margin:0.8rem;
   background-color:white;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .container:hover {
@@ -45,6 +50,9 @@ a { text-decoration: none; color:#44444d }
 
 /* PC Computer and above */
   @media screen and (min-width: 800px) {
+    .newsRender{
+      margin-top: 12vh;
+    }
     .heading{
       font-family: 'Roboto',sans-serif;
       font-weight: 300;
@@ -73,6 +81,9 @@ a { text-decoration: none; color:#44444d }
         display: flex;
         align-items: center;
         flex-direction: row;
+
+        cursor: pointer;
+
       }
       .author{
         font-family: 'Conv_ClanPro-Bold',Sans-Serif;
