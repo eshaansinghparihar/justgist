@@ -27,7 +27,7 @@ a { text-decoration: none; color:#44444d }
   margin:0.8rem;
   background-color:white;
   border-radius: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .container:hover {
@@ -82,7 +82,7 @@ a { text-decoration: none; color:#44444d }
         align-items: center;
         flex-direction: row;
 
-        cursor: pointer;
+        /* cursor: pointer; */
 
       }
       .author{
