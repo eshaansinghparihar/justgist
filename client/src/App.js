@@ -13,12 +13,19 @@ export default function App() {
   const [sportsnews, setsportsNews]=useState([]);
   const [technologynews, settechnologyNews]=useState([]);
   const [error,setError]=useState('');
+  const [businesserror,setBusinessError]=useState('');
+  const [entertainmenterror,setEntertainmentError]=useState('');
+  const [healtherror,setHealthError]=useState('');
+  const [scienceerror,setScienceError]=useState('');
+  const [sportserror,setSportsError]=useState('');
+  const [technologyerror,setTechnologyError]=useState('');
   function callNewsAPI(){
         fetch("/news")
         .then(res => res.json())
         .then(res => {
           if(res.status==='ok')
         {
+          setError('');
           setNews(res.articles)
         }
         else
@@ -33,11 +40,12 @@ export default function App() {
     .then(res => {
       if(res.status==='ok')
     {
+      setBusinessError('')
       setbusinessNews(res.articles)
     }
     else
     {
-      setError(res.message)
+      setBusinessError(res.message)
     }
     });
 }
@@ -47,11 +55,12 @@ function callEntertainmentNewsAPI(){
   .then(res => {
     if(res.status==='ok')
   {
+    setEntertainmentError('')
     setentertainmentNews(res.articles)
   }
   else
   {
-    setError(res.message)
+    setEntertainmentError(res.message)
   }
   });
 }
@@ -61,11 +70,12 @@ function callHealthNewsAPI(){
   .then(res => {
     if(res.status==='ok')
   {
+    setHealthError('')
     sethealthNews(res.articles)
   }
   else
   {
-    setError(res.message)
+    setHealthError(res.message)
   }
   });
 }
@@ -75,11 +85,12 @@ function callSportsNewsAPI(){
   .then(res => {
     if(res.status==='ok')
   {
+    setSportsError('')
     setsportsNews(res.articles)
   }
   else
   {
-    setError(res.message)
+    setSportsError(res.message)
   }
   });
 }
@@ -89,11 +100,12 @@ function callScienceNewsAPI(){
   .then(res => {
     if(res.status==='ok')
   {
+    setScienceError('')
     setscienceNews(res.articles)
   }
   else
   {
-    setError(res.message)
+    setScienceError(res.message)
   }
   });
 }
@@ -103,11 +115,12 @@ function callTechnologyNewsAPI(){
   .then(res => {
     if(res.status==='ok')
   {
+    setTechnologyError('')
     settechnologyNews(res.articles)
   }
   else
   {
-    setError(res.message)
+    setTechnologyError(res.message)
   }
   });
 }
@@ -136,22 +149,22 @@ function callTechnologyNewsAPI(){
       <SearchCards />
       </Route>
       <Route exact path="/business" >
-      <NewsCards data={businessnews} error={error}/>
+      <NewsCards data={businessnews} error={businesserror}/>
       </Route>
       <Route exact path="/entertainment" >
-      <NewsCards data={entertainmentnews} error={error}/>
+      <NewsCards data={entertainmentnews} error={entertainmenterror}/>
       </Route>
       <Route exact path="/health" >
-      <NewsCards data={healthnews} error={error}/>
+      <NewsCards data={healthnews} error={healtherror}/>
       </Route>
       <Route exact path="/science" >
-      <NewsCards data={sciencenews} error={error}/>
+      <NewsCards data={sciencenews} error={scienceerror}/>
       </Route>
       <Route exact path="/sports" >
-      <NewsCards data={sportsnews} error={error}/>
+      <NewsCards data={sportsnews} error={sportserror}/>
       </Route>
       <Route exact path="/technology" >
-      <NewsCards data={technologynews} error={error}/>
+      <NewsCards data={technologynews} error={technologyerror}/>
       </Route>
       <Redirect to="/" />
   </Switch>
