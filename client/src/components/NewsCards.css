@@ -37,7 +37,7 @@ a { text-decoration: none; color:#44444d }
   max-width: 90%;
   margin:0.8rem;
   border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
 }
 .centered {
   color:black;
@@ -106,7 +106,7 @@ a { text-decoration: none; color:#44444d }
         width: 30%;
         margin:0.8rem;
         border-radius: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
       }
       text{
         margin-bottom: 2vh;
