@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
       },
       appBar: {
-        //  background: 'linear-gradient(-45deg, #6f0000 10%, #200122 90%)',
         background:'#8d1c55',
         zIndex:theme.spacing(1),
         transition: theme.transitions.create(['margin', 'width'], {
@@ -56,6 +55,7 @@ export default function App() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState('/');
+  const [auth,setAuth]=useState("");
   const handleDrawerClose=()=>{
     setOpen(false);
   }
@@ -64,6 +64,8 @@ export default function App() {
   }
   useEffect(()=>{
     setLocation(window.location.pathname);
+    const auth=localStorage.getItem("user_id");
+    setAuth(auth);
   })
   const activeRoute = (routeName) => {
     return location === routeName ? true : false ;
@@ -102,6 +104,18 @@ style={{ zIndex: 1250 }}
 </IconButton>
 </div>
 <MenuList>
+
+{(auth===null)?(<Link to="/login" style={{ textDecoration: 'none' }} >
+<MenuItem onClick={handleDrawerClose} selected={activeRoute("/login")}>
+<ListItemText secondary="Login" className="heading"/> 
+</MenuItem>
+</Link>):''}
+
+{( auth!==null)?(<Link to="/dashboard" style={{ textDecoration: 'none' }} >
+<MenuItem onClick={handleDrawerClose} selected={activeRoute("/dashboard")}>
+<ListItemText secondary="Reading List" className="heading"/>
+</MenuItem>
+</Link>):''}
 
 <Link to="/search" style={{ textDecoration: 'none' }} >
 <MenuItem onClick={handleDrawerClose} selected={activeRoute("/search")}>

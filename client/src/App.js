@@ -1,10 +1,15 @@
-import React ,{useState, useEffect} from 'react';
+import React ,{useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Switch,Route,Redirect } from 'react-router-dom';
 import NewsCards from './components/NewsCards';
+import Signin from './components/Signin';
+import Signup from './components/Signup';
 import Navigation from './components/Navigation';
 import SearchCards from './components/SearchCards';
+import Dashboard from './components/Dashboard';
+
 export default function App() {
+  
   const [news, setNews]=useState([]);
   const [businessnews, setbusinessNews]=useState([]);
   const [entertainmentnews, setentertainmentNews]=useState([]);
@@ -134,16 +139,24 @@ function callTechnologyNewsAPI(){
     callSportsNewsAPI();
     callTechnologyNewsAPI();
   },[]);
-  
   return (
   <BrowserRouter>
   <div>
   <div className="float">
-  <Navigation />
+  <Navigation/>
   </div>
-  <Switch>
+      <Switch>
       <Route exact path="/" >
       <NewsCards data={news} error={error}/>
+      </Route>
+      <Route exact path="/login" >
+      <Signin />
+      </Route>
+      <Route exact path="/signup" >
+      <Signup/>
+      </Route>
+      <Route exact path="/dashboard" >
+      <Dashboard/>
       </Route>
       <Route exact path="/search" >
       <SearchCards />
