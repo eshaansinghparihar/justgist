@@ -63,7 +63,7 @@ export default function SignIn() {
       email:email,
       password:password
     }
-    await axios.post('/auth/signin',queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
+    await axios.post('http://localhost:3001/auth/signin',queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
     .then(response=>{
       if(response.data.success)
         {

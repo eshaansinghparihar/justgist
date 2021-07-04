@@ -25,7 +25,7 @@ export default function App() {
   const [sportserror,setSportsError]=useState('');
   const [technologyerror,setTechnologyError]=useState('');
   function callNewsAPI(){
-        fetch("/news")
+        fetch("http://localhost:3001/news")
         .then(res => res.json())
         .then(res => {
           if(res.status==='ok')

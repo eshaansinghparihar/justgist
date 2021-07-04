@@ -9,7 +9,10 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
 const authRoutes = require('./routes/auth');
-const { db, collection } = require('./models/User');
+// const { db, collection } = require('./models/User');
+
+const collectionUsers = require('./models/User').collection;
+const collectionDiscussion = require('./models/Discussion').collection;
 
 const PORT = process.env.PORT || 3001;
 
@@ -37,6 +40,7 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("Database connection established successfully");
 })
+
 
 let query="";
 app.use('/auth', authRoutes);
@@ -107,7 +111,7 @@ app.post('/addToReadingList',async function(req, res) {
   }
   };
   try{
-    const result = await collection.updateOne(query, updateDocument );
+    const result = await collectionUsers.updateOne(query, updateDocument );
     res.send(result);
   }
   catch(error){
@@ -116,15 +120,42 @@ app.post('/addToReadingList',async function(req, res) {
 
 })
 
-app.post('/fetchFromReadingList', async function(req, res, next) {
+app.post('/fetchMyQuestions',async function(req, res) {
+  email=req.body.email;
+  const query = { "email":email };
+  try{
+    const result = await collectionUsers.findOne(query );
+    console.log(result);
+    res.send(result);
+  }
+  catch(error){
+    res.send("Something went wrong")
+  }
+
+})
+
+app.post('/addQuestionToDiscussions', async function(req, res, next) {
+      title=req.body.title;
+      description=req.body.title;
+      question=req.body.question;
       email=req.body.email;
+      author=req.body.author;
+      newsUrl=req.body.newsUrl;
+      urlToImage=req.body.urlToImage;
+      const query = { "email":email,
+      "title":title,
+      "author":author,
+      "description":description,
+      "question":question,
+      "newsUrl":newsUrl,
+      "urlToImage":urlToImage };
       try
       {
-        const result=await collection.findOne({"email":email});
-        res.send(result.readingList);
+        const result=await collectionDiscussion.insertOne( query )
+        res.send(result);
       }
       catch(error){
-        res.send(error);
+        res.send("Something went wrong");
       }
   
 });
@@ -140,7 +171,7 @@ app.post('/deleteFromReadingList',async function(req, res) {
         }
       }
       };
-      const result = await collection.updateOne(query, updateDocument , { safe: true } );
+      const result = await collectionUsers.updateOne(query, updateDocument , { safe: true } );
       res.send(result);
     }
   catch(error){

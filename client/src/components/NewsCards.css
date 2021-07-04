@@ -1,6 +1,13 @@
 
 /* Mobile & Tablet */
 @media screen and (max-width: 799px) {
+  .holder{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   .heading{
     font-family: 'Roboto',sans-serif;
     font-weight: 300;
@@ -50,6 +57,13 @@ a { text-decoration: none; color:#44444d }
 
 /* PC Computer and above */
   @media screen and (min-width: 800px) {
+    .holder{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
     .newsRender{
       margin-top: 12vh;
     }

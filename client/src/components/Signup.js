@@ -63,7 +63,7 @@ class Signup extends Component{
     this.setState({success:""})
     this.setState({errors:[]})
     let queryObject=this.state.user
-    axios.post('/auth/signup', queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
+    axios.post('http://localhost:3001/auth/signup', queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
     .then(response=>{
       if(response.data.success)
         {
