@@ -124,11 +124,23 @@ app.post('/fetchMyQuestions',async function(req, res) {
   email=req.body.email;
   const query = { "email":email };
   try{
-    const result = await collectionUsers.findOne(query );
-    console.log(result);
+    const result = await collectionDiscussion.findOne(query );
     res.send(result);
   }
   catch(error){
+    res.send("Something went wrong")
+  }
+
+})
+
+app.get('/fetchQuestions',async function(req, res) {
+  try{
+    const cursor =collectionDiscussion.find({});
+    const discussions=await cursor.toArray();
+    res.send(discussions);
+  }
+  catch(error){
+    console.log(error);
     res.send("Something went wrong")
   }
 
@@ -159,7 +171,18 @@ app.post('/addQuestionToDiscussions', async function(req, res, next) {
       }
   
 });
+app.post('/fetchFromReadingList', async function(req, res, next) {
+  email=req.body.email;
+  try
+  {
+    const result=await collectionUsers.findOne({"email":email});
+    res.send(result.readingList);
+  }
+  catch(error){
+    res.send(error);
+  }
 
+});
 app.post('/deleteFromReadingList',async function(req, res) {
   email=req.body.email;
   title=req.body.title;
@@ -172,6 +195,68 @@ app.post('/deleteFromReadingList',async function(req, res) {
       }
       };
       const result = await collectionUsers.updateOne(query, updateDocument , { safe: true } );
+      res.send(result);
+    }
+  catch(error){
+    res.send(error)
+  }
+
+})
+
+app.post('/addReply',async function(req, res) {
+  email=req.body.email;
+  title=req.body.title;
+  nameOfUser=req.body.name;
+  description=req.body.description;
+  question=req.body.question;
+  reply=req.body.reply;
+  const query = { "title":title , "description":description , "question":question };
+  const updateDocument = {
+    $addToSet: { "replies": {
+      "reply":reply,
+      "name":nameOfUser,
+      "email":email,
+    }
+  }
+  };
+  try{
+    const result = await collectionDiscussion.updateOne(query, updateDocument );
+    res.send(result);
+  }
+  catch(error){
+    res.send(error)
+  }
+
+})
+app.post('/deleteReply',async function(req, res) {
+  email=req.body.email;
+  reply=req.body.reply;
+  title=req.body.title;
+  question=req.body.question;
+  try{
+      const query = { "title":title , "question":question };
+      const updateDocument = {
+        $pull: { "replies": {
+          "reply":reply,
+          "email":email
+        }
+      }
+      };
+      const result = await collectionDiscussion.updateOne(query, updateDocument , { safe: true } );
+      res.send(result);
+    }
+  catch(error){
+    res.send(error)
+  }
+
+})
+
+app.post('/deleteQuestion',async function(req, res) {
+  email=req.body.email;
+  title=req.body.title;
+  try{
+      const query = { "email":email , "title":title};
+      const result = await collectionDiscussion.findOneAndDelete(query);
       res.send(result);
     }
   catch(error){

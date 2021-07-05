@@ -117,6 +117,12 @@ style={{ zIndex: 1250 }}
 </MenuItem>
 </Link>):''}
 
+{( auth!==null)?(<Link to="/discussions" style={{ textDecoration: 'none' }} >
+<MenuItem onClick={handleDrawerClose} selected={activeRoute("/discussions")}>
+<ListItemText secondary="Discussions" className="heading"/>
+</MenuItem>
+</Link>):''}
+
 <Link to="/search" style={{ textDecoration: 'none' }} >
 <MenuItem onClick={handleDrawerClose} selected={activeRoute("/search")}>
 <ListItemText secondary="Search" className="heading"/> 

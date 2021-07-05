@@ -2,7 +2,6 @@ import React, {useState , useEffect } from 'react';
 import './NewsCards.css';
 import SendIcon from '@material-ui/icons/Send';
 import {TextField} from '@material-ui/core';
-import { ToastContainer, toast } from 'react-toastify';
 import { IconButton } from '@material-ui/core';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
@@ -11,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-export default function Question({newsElem}){
+export default function Question({newsElem , notifySuccess , notifyCommentSuccess , notifyFailure }){
     const history = useHistory();
     const [id,setId]=useState("");
     const [email,setEmail]=useState("");
@@ -20,45 +19,13 @@ export default function Question({newsElem}){
     const [question,setQuestion]=useState("");
     useEffect(()=>{
       const id=localStorage.getItem("user_id");
-      const name=localStorage.getItem("user_id");
+      const name=localStorage.getItem("user_name");
       const email=localStorage.getItem("user_email");
       setId(id);
       setEmail(email);
       setName(name);
     },[])
-    const notifySuccess=()=>{
-        toast.success('Saved to Reading List Succesfully', {
-          position: "top-left",
-          autoClose: 1500,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
-      }
-    const notifyCommentSuccess=()=>{
-        toast.success('Question posted in Discussions Succesfully', {
-          position: "top-left",
-          autoClose: 1500,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
-      }
-      const notifyFailure=()=>{
-        toast.error('Something went wrong', {
-          position: "top-left",
-          autoClose: 1500,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
-      }
+
     const authHandler=()=>{
         history.push("/login");
       }
@@ -76,7 +43,7 @@ export default function Question({newsElem}){
           publishedAt:newsElem.publishedAt,
           sourceName:newsElem.source.name
         }
-        let response=await axios.post('http://localhost:3001/addToReadingList', queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
+        let response=await axios.post('/addToReadingList', queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
         if(response.statusText==="OK")
         {
           notifySuccess();
@@ -96,31 +63,20 @@ export default function Question({newsElem}){
           newsUrl:newsElem.url,
           question:question
         }
-        let response=await axios.post('http://localhost:3001/addQuestionToDiscussions', queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
+        let response=await axios.post('/addQuestionToDiscussions', queryObject , {headers:{"Content-Type" : "application/json",accept: 'application/json'}})
         if(response.statusText==="OK")
         {
           notifyCommentSuccess();
-          setQuestion("")
+          setQuestion("");
+          setOpen(false);
         }
         else
         {
           notifyFailure();
         }
       }
-      console.log(newsElem)
     return(
         <div>
-        <ToastContainer
-        position="top-left"
-        autoClose={1500}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        />
         <div className="holder">
         {(id===null)?(<p className="text description"><IconButton onClick={()=>authHandler()}><BookmarkIcon color="action" /></IconButton></p>):(
         <p className="text description"><IconButton onClick={()=>addClickHandler()}><BookmarkBorderIcon color="error"/></IconButton></p>
@@ -130,18 +86,14 @@ export default function Question({newsElem}){
         )}
         </div>
         {open && <div className="holder">
-        <TextField
-        margin="outline"
-        multiline
-        rows={2}
-        required
-        fullWidth
-        id="question"
-        label="Have a question in mind? Move it to Discussions"
-        name="question"
-        value={question}
-        onInput={ e=>setQuestion(e.target.value)}
-        />
+        <textarea
+                     name="question" 
+                     value={question}
+                     placeholder="Wish to discuss over this gist with like minded people? Ask a question and move gist to Discussions."
+                     onChange={e=>setQuestion(e.target.value)}
+                     rows="3" cols="50"
+                     className="Input"
+                 />
         {(question==="")?(<p className="text description"><IconButton ><SendIcon color="action" /></IconButton></p>):(
         <p className="text description"><IconButton onClick={()=>addQuestionClickHandler()}><SendIcon color="error"/></IconButton></p>
         )}

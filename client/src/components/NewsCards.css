@@ -1,4 +1,29 @@
-
+.Input{
+  display: flex;
+  resize: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin:1vh;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 20px;
+  border: 0.5px solid white;
+  /* box-shadow: 8px 8px 8px black; */
+  box-shadow: 0 8px 16px 0 rgba(255,255,255,0.2);
+}
+textarea.Input:focus {
+  outline-width: 0;
+}
+.holderReplies{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.deleteReply{
+  float: right;
+}
 /* Mobile & Tablet */
 @media screen and (max-width: 799px) {
   .holder{

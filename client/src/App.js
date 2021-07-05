@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Navigation from './components/Navigation';
 import SearchCards from './components/SearchCards';
 import Dashboard from './components/Dashboard';
+import Discussion from './components/Discussion';
 
 export default function App() {
   
@@ -157,6 +158,9 @@ function callTechnologyNewsAPI(){
       </Route>
       <Route exact path="/dashboard" >
       <Dashboard/>
+      </Route>
+      <Route exact path="/discussions" >
+      <Discussion/>
       </Route>
       <Route exact path="/search" >
       <SearchCards />
