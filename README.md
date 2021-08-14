@@ -1,6 +1,6 @@
 # justgist
 
-Developed a Progressive Single Page Recipe Suggestion Web Application based on ReactJS called cooking Simplified.<br />
+Developed a MERN Stack based Progressive Single Page News Reading And Discussions Web Application called justGist. <br />
 
 ## Stack Used:
 FrontEnd : ReactJS <br/>
