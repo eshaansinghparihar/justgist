@@ -6,7 +6,7 @@ Developed a Progressive Single Page Recipe Suggestion Web Application based on R
 FrontEnd : ReactJS <br/>
 Backend : Express Node.js MongoDB  <br/>
 
-##Features:
+## Features:
 1.Read the gists of news articles published by various trusted and authentic news platforms. <br/>
 2.Search for specific news from across all the articles written recently. <br/>
 3.Save articles to read later and delete them after you're done. <br/>
