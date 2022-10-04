@@ -4,11 +4,9 @@ import Loading from './Loading';
 import Question from './Question';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useHistory } from 'react-router-dom';
 
 import Error from './Error';
 function News({data,error}){
-  const history = useHistory();
   const [id,setId]=useState("");
   const [email,setEmail]=useState("");
   const [name,setName]=useState("");

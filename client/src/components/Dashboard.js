@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { IconButton } from '@material-ui/core';
 import LoadingDashboard from './LoadingDashboard';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import { Paper ,Container, CssBaseline,CardContent , Button, Typography } from '@material-ui/core';
+import { Container, CssBaseline,CardContent , Button } from '@material-ui/core';
 import Loading from './Loading';
 import { Redirect, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
       justifyContent:'center',
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
       marginLeft:'auto',
       marginRight:'auto',
   }
@@ -164,7 +163,7 @@ useEffect(()=>{
   }
   return(
     <div className="container" key={newsElem.title}>
-      {(newsElem.urlToImage)?<img src={newsElem.urlToImage} className="image"></img>:<img/>}
+      {(newsElem.urlToImage)?<img src={newsElem.urlToImage} className="image" alt={newsElem.title}/>:<img alt={newsElem.title}/>}
       <div className="centered">
       <p className="text heading">{newsElem.title}</p>
       {(newsElem.author) ? (<p className="text author">Written by <b>{newsElem.author}</b> on {date.toDateString()} at {(date.getHours()<10?'0':'') + date.getHours()}:{(date.getMinutes()<10?'0':'') + date.getMinutes()} </p>):(<p className="text author">Written on {date.toDateString()} at {(date.getHours()<10?'0':'') + date.getHours()}:{(date.getMinutes()<10?'0':'') + date.getMinutes()}</p>)}

@@ -21,7 +21,6 @@ const useStyles= makeStyles((theme)=>({
       justifyContent:'center',
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
       marginLeft:'auto',
       marginRight:'auto',
   },

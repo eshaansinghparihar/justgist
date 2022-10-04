@@ -38,7 +38,7 @@ export default function App() {
         {
           setError(res.message)
         }
-        });
+        }).catch(err=>{console.log(err)});
   }
   function callBusinessNewsAPI(){
     fetch("/businessnews")

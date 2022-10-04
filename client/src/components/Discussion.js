@@ -5,7 +5,7 @@ import LoadingDiscussion from './LoadingDiscussion';
 import { ToastContainer, toast } from 'react-toastify';
 import { Redirect, useHistory } from 'react-router-dom';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import { Paper ,Container, CssBaseline,CardContent , Button, Typography } from '@material-ui/core';
+import { Container, CssBaseline,CardContent , Button } from '@material-ui/core';
 import Loading from './Loading';
 import './Discussion.css';
 import './NewsCards.css';
@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
       justifyContent:'center',
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
       marginLeft:'auto',
       marginRight:'auto',
   }
@@ -52,7 +51,6 @@ export default function Discussion(){
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [discussions,setDiscussions]=useState([]);
-    const [replies,setReplies]=useState([]);
     const [requestData, setRequestData] = useState(new Date());
     useEffect(()=>{
         const id=localStorage.getItem("user_id");
@@ -215,7 +213,7 @@ export default function Discussion(){
     })
     return(
     <div className="container" key={discussion.title}>
-    {(discussion.urlToImage)?<img src={discussion.urlToImage} className="image"></img>:<img/>}
+    {(discussion.urlToImage)?<img src={discussion.urlToImage} className="image" alt={discussion.title}></img>:<img alt={discussion.title}/>}
     <div className="centered">
     <p className="text heading">{discussion.title}</p>
     <p className="text description">{discussion.description}</p>
