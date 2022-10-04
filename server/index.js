@@ -96,7 +96,7 @@ console.log(err)
 app.get('/healthnews', function(req, res, next) {
 try{
 console.log('GET Health News endpoint has been called')
-request('https://newsapi.org/v2/top-headlines?country=in&category=health&pageSize=100&apiKey=06f0790a0cb240d9afc49242b64fbe75', options, function(error, response, body) {
+request('https://newsapi.org/v2/top-headlines?country=in&category=health&pageSize=100&apiKey=06f0790a0cb240d9afc49242b64fbe75', getOptions(req), function(error, response, body) {
 res.send(body)
 });
 }
@@ -119,7 +119,7 @@ console.log(err)
 app.get('/sportsnews', function(req, res, next) {
 try{
 console.log('GET Sports News Endpoint has been called')
-request('https://newsapi.org/v2/top-headlines?country=in&category=sports&pageSize=100&apiKey=375a9b5307274bba94cf86101d06c03', getOptions(req), function(error, response, body) {
+request('https://newsapi.org/v2/top-headlines?country=in&category=sports&pageSize=100&apiKey=06f0790a0cb240d9afc49242b64fbe75', getOptions(req), function(error, response, body) {
 res.send(body)
 });
 }
@@ -131,7 +131,7 @@ console.log(err)
 app.get('/technologynews', function(req, res, next) {
 try{
 console.log('GET Technology News Endpoint has been called')
-request('https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=100&apiKey=375a9b5307274bba94cf86101d06c03', getOptions(req), function(error, response, body) {
+request('https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=100&apiKey=06f0790a0cb240d9afc49242b64fbe75', getOptions(req), function(error, response, body) {
 res.send(body)
 });
 }
