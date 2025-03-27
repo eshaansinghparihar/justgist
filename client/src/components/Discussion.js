@@ -60,6 +60,7 @@ export default function Discussion(){
         setName(name);
         setEmail(email);
         async function fetchQuestions(){
+          try{
             let response = await axios.get('/fetchQuestions')
             if(response.statusText==="OK")
             {
@@ -67,8 +68,12 @@ export default function Discussion(){
             }
             else
             {
-                console.log("Something went wrong!")
+                console.log("Something went wrong, No Respone found!")
             }
+          }
+          catch(error){
+            console.error(error);
+          }
         }
         fetchQuestions();
       },[requestData])
