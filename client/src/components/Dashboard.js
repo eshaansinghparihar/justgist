@@ -97,7 +97,7 @@ export default function Dashboard() {
       );
     }
   }
-  useEffect(() => {
+  useEffect(async () => {
     const id = localStorage.getItem("user_id");
     const name = localStorage.getItem("user_name");
     const email = localStorage.getItem("user_email");
@@ -110,20 +110,19 @@ export default function Dashboard() {
           email: email,
         }
         let response = await axios.post('/fetchFromReadingList', queryObject, { headers: { "Content-Type": "application/json", accept: 'application/json' } })
-        if (response.statusText === "OK") {
+        if (response) {
           setReadingList(response.data)
         }
         else {
           console.log("Something went wrong, No Response!")
         }
       }
-      catch(error)
-      {
+      catch (error) {
         console.error(error);
       }
     }
-    fetchReadingList();
-  }, [requestData])
+    await fetchReadingList();
+  }, [readingList.length, requestData]);
   const notifySuccess = () => {
     toast.success('Deleted from Reading List Succesfully', {
       position: "top-left",
@@ -153,12 +152,18 @@ export default function Dashboard() {
         email: email,
         title: newsElem.title,
       }
-      let response = await axios.post('/deleteFromReadingList', queryObject, { headers: { "Content-Type": "application/json", accept: 'application/json' } })
-      if (response.statusText === "OK") {
-        setRequestData(new Date());
-        notifySuccess();
+      try{
+        let response = await axios.post('/deleteFromReadingList', queryObject, { headers: { "Content-Type": "application/json", accept: 'application/json' } })
+        if (response) {
+          setRequestData(new Date());
+          notifySuccess();
+        }
+        else {
+          notifyFailure();
+        }
       }
-      else {
+      catch(error){
+        console.error(error);
         notifyFailure();
       }
     }

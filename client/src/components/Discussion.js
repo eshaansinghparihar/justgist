@@ -52,7 +52,7 @@ export default function Discussion(){
     const [email,setEmail]=useState("");
     const [discussions,setDiscussions]=useState([]);
     const [requestData, setRequestData] = useState(new Date());
-    useEffect(()=>{
+    useEffect(async ()=>{
         const id=localStorage.getItem("user_id");
         const name=localStorage.getItem("user_name");
         const email=localStorage.getItem("user_email");
@@ -62,6 +62,7 @@ export default function Discussion(){
         async function fetchQuestions(){
           try{
             let response = await axios.get('/fetchQuestions')
+            console.log(response);
             if(response.statusText==="OK")
             {
                 setDiscussions(response.data)
@@ -75,8 +76,8 @@ export default function Discussion(){
             console.error(error);
           }
         }
-        fetchQuestions();
-      },[requestData])
+        await fetchQuestions();
+      },[requestData, discussions.length]);
     const notifySuccess=()=>{
     toast.success('Deleted Question from Discussions Succesfully', {
     position: "top-left",
